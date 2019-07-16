@@ -6,10 +6,10 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import dummyReducer from './reducers/dummyreducer';
-import newPostReducer from './reducers/newPostReducer';
+import dummyReducer from './reducers';
+import rootReducer from './reducers/index';
 
-const store = createStore(newPostReducer);
+const store = createStore(rootReducer);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -24,3 +24,10 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+
+
+
+//We need to combine the reducers into one and pass it
+// to the createStore() 

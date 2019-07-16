@@ -1,18 +1,29 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 
+function Post(props) {
 
-export default function Post(props) {
+    function handleVotes(vote) {
+        const { dispatch } = props;
+        console.log(dispatch);
+        
+        const action = {
+            type: vote
+        };
+        dispatch(action);
+    }
+
     return (
         <div>
             {/* onCLick={viewPost} */}
             <h2>{props.Title}</h2>
             <h3>{props.Topic}</h3>
             <h4>{props.Vote}</h4>
-            {/* <button onClick={voteUp}>&#9650</button>
-            <button onClick={voteDown}>&#9660</button> */}
+            <button onClick={() => handleVotes('plus')}>&#9650;</button>
+            <button onClick={() => handleVotes('minus')}>&#9660;</button>
         </div>
     )
 }
@@ -24,3 +35,5 @@ Post.propTypes = {
     Vote: PropTypes.number,
     Id: PropTypes.string
 }
+
+export default connect()(Post);
