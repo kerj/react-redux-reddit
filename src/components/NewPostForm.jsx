@@ -1,5 +1,4 @@
 import React from 'react';
-import Moment from 'moment';
 import { v4 } from 'uuid';
 import { connect } from 'react-redux';
 
@@ -15,12 +14,11 @@ function NewPostForm(props) {
         e.preventDefault();
         const action = {
             type: 'ADD_POST',
-            id: v4(),
-            title: Title.value,
-            topic: Topic.value,
-            content: Content.value,
-            postTime: new Moment(),
-            vote: 0
+            Id: v4(),
+            Title: Title.value,
+            Topic: Topic.value,
+            Content: Content.value,
+            Vote: 0
         };
         dispatch(action);
         Title.value = '';
